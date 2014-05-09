@@ -22,6 +22,9 @@ default[:cassandra][:priam_cass_extensions_jar][:checksum] = "f5cbee81dd885d07c5
 ###
 # Various Install attributes
 
+# JVM Stack size - this default is 180k which is not enough and stops cassandra from running.
+default[:cassandra][:stacksize] = "Xss228k"
+
 # We will attempt to get AWS credentials from a databag - the attributes of which are below
 # These variables stolen from the EBS cookbook https://raw.github.com/albertsj1/chef-ebs/master/attributes/default.rb
 default[:cassandra][:aws][:databag] = "credentials"

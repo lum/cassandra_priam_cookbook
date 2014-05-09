@@ -75,6 +75,17 @@ link node[:cassandra][:priam_cass_home] do
   group     "#{node[:tomcat][:group]}"
 end
 
+# "The stack size specified is too small, Specify at least 228k"
+# fix the -Xss180k issue: -Xss180k is too low and is coded in the cassandra-env.sh
+bash "Correct minimum stack size for Cassandra JVM" do
+  user node[:cassandra][:user]
+  cwd "/"
+  code <<-EOH
+  sed -i -E "s/Xss180k/#{node[:cassandra][:stacksize]}/g" #{node[:cassandra][:priam_cass_home]}/conf/cassandra-env.sh
+  EOH
+  not_if "grep #{node[:cassandra][:stacksize]} #{node[:cassandra][:priam_cass_home]}/conf/cassandra-env.sh"
+end
+
 # link in Java Native interface, if found
 link "#{node[:cassandra][:priam_cass_home]}/lib/jna.jar" do
   to "/usr/share/java/jna.jar"

@@ -5,9 +5,9 @@
 default[:cassandra][:nameprefix] = "dsc-cassandra"
 
 # Where to get Cassandra from: Directly from Datastax
-default[:cassandra][:version] = "1.2.10"
+default[:cassandra][:version] = "2.0.7"
 default[:cassandra][:src_url] = "http://downloads.datastax.com/community/#{node[:cassandra][:nameprefix]}-#{node['cassandra']['version']}-bin.tar.gz"
-default[:cassandra][:checksum] = "c731c8e2bc84769f884f423fb839ab3205279972b842ab37fdace49ef511e544"
+default[:cassandra][:checksum] = "671ae08ce04a7c6117acc644646fabcb26b8062c4dd73f6e2dc570450f0cdc78"
 
 # Priam Build Sources
 # You can get builds directly from maven.org : http://search.maven.org/ search for "com.netflix.priam"

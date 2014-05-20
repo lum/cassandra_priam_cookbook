@@ -83,7 +83,7 @@ bash "Correct minimum stack size for Cassandra JVM" do
   code <<-EOH
   sed -i -E "s/Xss180k/#{node[:cassandra][:stacksize]}/g" #{node[:cassandra][:priam_cass_home]}/conf/cassandra-env.sh
   EOH
-  not_if "grep #{node[:cassandra][:stacksize]} #{node[:cassandra][:priam_cass_home]}/conf/cassandra-env.sh"
+  only_if "grep Xss180k #{node[:cassandra][:priam_cass_home]}/conf/cassandra-env.sh"
 end
 
 # link in Java Native interface, if found

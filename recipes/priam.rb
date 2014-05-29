@@ -21,7 +21,7 @@
 sudo node[:tomcat][:user] do
   user node[:tomcat][:user]
   runas "root"
-  commands ['/etc/init.d/cassandra start', '/etc/init.d/cassandra stop'] 
+  commands [node[:cassandra][:priam_cass_startscript], node[:cassandra][:priam_cass_stopscript]]
   nopasswd true
   defaults ['!requiretty','env_reset']
 end

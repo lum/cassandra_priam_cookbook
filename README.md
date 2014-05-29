@@ -66,7 +66,8 @@ Requirements
 * [Amazon SimpleDB][3]
 * [Java cookbook][8]
 * [Tomcat cookbook][9]
-* [Fog Gem][10]
+* [Sudo cookbook][10]
+* [Fog Gem][11]
 
 ## Platform
 
@@ -110,6 +111,11 @@ The following example variables should be in the unique role's "overrides" attri
   "tomcat":{
      "base_version": "7"
   },
+  "authorization": {
+    "sudo": {
+      "include_sudoers_d": "true"
+    }
+  },
   "java": {
     "install_flavor": "oracle",
     "jdk_version": "7",
@@ -132,6 +138,11 @@ The following example variables should be in the unique role's "overrides" attri
   },
   "tomcat":{
      "base_version": "7"
+  },
+  "authorization": {
+    "sudo": {
+      "include_sudoers_d": "true"
+    }
   },
   "java": {
       "install_flavor": "oracle",
@@ -174,15 +185,18 @@ See the [Github page][7]
 [4]: https://github.com/Netflix/Priam/wiki/Properties
 [5]: https://github.com/twall/jna
 [6]: http://aws.amazon.com/autoscaling
-[7]: https://github.com/mdsol/cassandra_priam_cookbook
+[7]: https://github.com/atrull/cassandra_priam_cookbook
 [8]: http://community.opscode.com/cookbooks/java
 [9]: http://community.opscode.com/cookbooks/tomcat
-[10]: https://rubygems.org/gems/fog
+[10]: http://community.opscode.com/cookbooks/sudo
+[11]: https://rubygems.org/gems/fog
 
 Authors
 =======
 
-* Author: Alex Trull <atrull@mdsol.com>
+* Author: Alex Trull <cookbooks.alex@trull.org>
 * Author: Benton Roberts <broberts@mdsol.com>
+* Author: James Bence <jbence@mdsol.com>
 
 Copyright: 2013–2013 Medidata Solutions, Inc.
+Copyright: 2014- Alex Trull

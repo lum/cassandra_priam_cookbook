@@ -17,10 +17,11 @@
 # limitations under the License.
 #
 
-# Sudo entry to manage cassandra startup/shutdown via Priam
-template "/etc/sudoers.d/tomcat" do
-  source "tomcatsudo.erb"
-  mode    0440
+# Sudo entry to manage cassandra startup/shutdown via Priam running as the tomcat user.
+sudo node[:tomcat][:user] do
+  commands ["#{node[:cassandra][:priam_cass_startscript]}", "#{node[:cassandra][:priam_cass_stopscript]}"] 
+  nopasswd true
+  defaults ['!requiretty','env_reset']
 end
 
 # Priam's agent jar 

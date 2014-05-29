@@ -19,6 +19,8 @@
 
 # Sudo entry to manage cassandra startup/shutdown via Priam running as the tomcat user.
 sudo node[:tomcat][:user] do
+  user node[:tomcat][:user]
+  runas root
   commands ['/etc/init.d/cassandra start', '/etc/init.d/cassandra stop'] 
   nopasswd true
   defaults ['!requiretty','env_reset']

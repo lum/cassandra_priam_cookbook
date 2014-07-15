@@ -53,7 +53,7 @@ bash "Setup Agent in Cassandra Include File" do
   cwd "/"
   code <<-EOH
   cp #{node[:cassandra][:priam_cass_home]}/bin/cassandra.in.sh /tmp
-  echo "export JVM_OPTS=\"-javaagent:\\$CASSANDRA_HOME/lib/priam-cass-extensions-#{node[:cassandra][:priam_version]}.jar\"" >> /tmp/cassandra.in.sh
+  echo "\nexport JVM_OPTS=\"-javaagent:\\$CASSANDRA_HOME/lib/priam-cass-extensions-#{node[:cassandra][:priam_version]}.jar\"" >> /tmp/cassandra.in.sh
   cp /tmp/cassandra.in.sh #{node[:cassandra][:priam_cass_home]}/
   EOH
   not_if "grep #{node[:cassandra][:priam_version]} #{node[:cassandra][:priam_cass_home]}/cassandra.in.sh"
